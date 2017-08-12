@@ -16,6 +16,14 @@ namespace Practice_2_task_Simple_weights
             }
             return true;//если не встречаем числа, на которое number делится, то возвращаем true
         }
+        static int ChooseMinPrime(int number)
+        {//функция, отыскивающая минимальное простое число, большее данного не простого
+            for (int i = number + 1; i <= 500009; i++)//перебираем числа от исходного до максимального возможного простого
+            {
+                if (PrimeNumber(i)) return i;//как только встречаем простое число, возвращаем его
+            }
+            return 0;//для того, чтобы не подчеркивали. Такой вариант невозможен, так как 500009 - простое
+        }
 
         static void Main(string[] args)
         {
@@ -24,6 +32,12 @@ namespace Practice_2_task_Simple_weights
             {
                 for (int i = 1; i <(N+1) / 2; i++)//выводим его слагаемые (1 и N-1, 2 и N-2... до середины)
                     Console.WriteLine(i + " " + (N - i));
+            }
+            else//Если N не простое
+            {
+                int MinPrime = ChooseMinPrime(N);//находим минимальное простое, большее данного числа
+                for (int i = MinPrime - N; i <= MinPrime / 2; i++)//выводим слагаемые MinPrime, начиная с MinPrime-N и N, и так далее (MinPrime-N+1 и N-1... до середины MinPrime)
+                    Console.WriteLine(i + " " + (MinPrime - i));
             }
             Console.ReadLine();
         }
