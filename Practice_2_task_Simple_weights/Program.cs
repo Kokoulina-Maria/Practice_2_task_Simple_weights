@@ -35,9 +35,13 @@ namespace Practice_2_task_Simple_weights
             }
             else//Если N не простое
             {
-                int MinPrime = ChooseMinPrime(N);//находим минимальное простое, большее данного числа
-                for (int i = MinPrime - N; i <= MinPrime / 2; i++)//выводим слагаемые MinPrime, начиная с MinPrime-N и N, и так далее (MinPrime-N+1 и N-1... до середины MinPrime)
-                    Console.WriteLine(i + " " + (MinPrime - i));
+                while (N > 0)//выполняем действия до тех пор, пока не дойдем до начала числового ряда, то есть до тех пор, пока N не станет равным 0
+                {
+                    int MinPrime = ChooseMinPrime(N);//находим минимальное простое, большее данного числа
+                    for (int i = MinPrime - N; i <= MinPrime / 2; i++)//выводим слагаемые MinPrime, начиная с MinPrime-N и N, и так далее (MinPrime-N+1 и N-1... до середины MinPrime)
+                        Console.WriteLine(i + " " + (MinPrime - i));
+                    N = MinPrime - N - 1;//теперь нужно составить пары из оставшихся чисел, меньших MinPrime-N
+                }               
             }
             Console.ReadLine();
         }
