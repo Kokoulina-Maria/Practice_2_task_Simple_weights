@@ -20,9 +20,9 @@ namespace Practice_2_task_Simple_weights
         static void Main(string[] args)
         {
             int N = int.Parse(Console.ReadLine());//считываем N
-            if (PrimeNumber(N))
+            if (PrimeNumber(N))//если N простое
             {
-                for (int i = 1; i <(N+1) / 2; i++)
+                for (int i = 1; i <(N+1) / 2; i++)//выводим его слагаемые (1 и N-1, 2 и N-2... до середины)
                     Console.WriteLine(i + " " + (N - i));
             }
             Console.ReadLine();
